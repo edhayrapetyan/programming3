@@ -3,7 +3,7 @@ var gr;
 var grassArr = [];
 var xotakerArr = [];
 var gishatichArr = [];
-var amenakerArr  = [];
+var amenakerArr = [];
 var gortArr = [];
 var count = 400, xotakcount = 100, gishcount = 20, amenakercount = 20, gortcount = 10;
 var matrix = new Array(50);
@@ -80,15 +80,13 @@ function draw() {
                 fill("red");
                 rect(x * side, y * side, side, side);
             }
-            else if(matrix[y][x] == 4)
-            {
+            else if (matrix[y][x] == 4) {
                 fill("black");
                 rect(x * side, y * side, side, side);
             }
-            else if(matrix[y][x] == 5)
-            {
+            else if (matrix[y][x] == 5) {
                 fill("blue");
-                rect(x * side, y * side, side, side);                
+                rect(x * side, y * side, side, side);
             }
         }
     }
@@ -112,29 +110,25 @@ function draw() {
     for (var i = 0; i < gishatichArr.length; i++) {
         gishatichArr[i].id = i;
         utelch = gishatichArr[i].utel();
-        if(!utelch)
-        {
-          gishatichArr[i].sharjvel();
-          gishatichArr[i].energy--;
+        if (!utelch) {
+            gishatichArr[i].sharjvel();
+            gishatichArr[i].energy--;
         }
-  
+
         gishatichArr[i].bazmanal();
         gishatichArr[i].mahanal();
     }
-    for(var i = 0; i < amenakerArr.length; i++)
-    {  
-        amenakerArr[i].id = i; 
+    for (var i = 0; i < amenakerArr.length; i++) {
+        amenakerArr[i].id = i;
         utelch = amenakerArr[i].utel();
-        if(!utelch)
-        {
+        if (!utelch) {
             amenakerArr[i].sharjvel();
             amenakerArr[i].energy--;
         }
         amenakerArr[i].bazmanal();
         amenakerArr[i].mahanal();
     }
-    for(var i = 0; i < gortArr.length; i++)
-    {
+    for (var i = 0; i < gortArr.length; i++) {
         gortArr[i].id = i;
         gortArr[i].sharjvel();
         gortArr[i].tunavorel();
