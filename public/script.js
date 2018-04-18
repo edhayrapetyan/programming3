@@ -5,34 +5,38 @@ var xotakerArr = [];
 var gishatichArr = [];
 var amenakerArr = [];
 var gortArr = [];
-var count = 400, xotakcount = 100, gishcount = 20, amenakercount = 20, gortcount = 10;
-var matrix = new Array(50);
+
+var matrixNum = 20;
+var count = 100, xotakcount = 1, gishcount = 4, amenakercount = 1, gortcount = 1;
+var matrix = new Array(matrixNum);
 for (var i = 0; i < matrix.length; i++) {
-    matrix[i] = new Array(50);
+    matrix[i] = new Array(matrixNum);
     for (var j = 0; j < matrix[i].length; j++)
         matrix[i][j] = 0;
 }
 while (count > 0) {
-    tx = Math.floor(Math.random() * 50);
-    ty = Math.floor(Math.random() * 50);
-    if (matrix[tx][ty] == 0) {
+    tx = Math.floor(Math.random() * matrixNum);
+    ty = Math.floor(Math.random() * matrixNum);
+    if (matrix[ty][tx] == 0) {
+        matrix[ty][tx] = 1;
         gr = new Grass(tx, ty);
         grassArr.push(gr);
         count--;
     }
 }
 while (xotakcount > 0) {
-    tx = Math.floor(Math.random() * 50);
-    ty = Math.floor(Math.random() * 50);
-    if (matrix[tx][ty] == 0) {
+    tx = Math.floor(Math.random() * matrixNum);
+    ty = Math.floor(Math.random() * matrixNum);
+    if (matrix[ty][tx] == 0) {
+        matrix[ty][tx] = 2;
         gr = new Xotaker(tx, ty);
         xotakerArr.push(gr);
         xotakcount--;
     }
-}
+}/*
 while (gishcount > 0) {
-    tx = Math.floor(Math.random() * 50);
-    ty = Math.floor(Math.random() * 50);
+    tx = Math.floor(Math.random() * matrixNum);
+    ty = Math.floor(Math.random() * matrixNum);
     if (matrix[tx][ty] == 0) {
         gr = new Gishatich(tx, ty);
         gishatichArr.push(gr);
@@ -40,8 +44,8 @@ while (gishcount > 0) {
     }
 }
 while (amenakercount > 0) {
-    tx = Math.floor(Math.random() * 50);
-    ty = Math.floor(Math.random() * 50);
+    tx = Math.floor(Math.random() * matrixNum);
+    ty = Math.floor(Math.random() * matrixNum);
     if (matrix[tx][ty] == 0) {
         gr = new Amenaker(tx, ty);
         amenakerArr.push(gr);
@@ -49,14 +53,14 @@ while (amenakercount > 0) {
     }
 }
 while (gortcount > 0) {
-    tx = Math.floor(Math.random() * 50);
-    ty = Math.floor(Math.random() * 50);
+    tx = Math.floor(Math.random() * matrixNum);
+    ty = Math.floor(Math.random() * matrixNum);
     if (matrix[tx][ty] == 0) {
         gr = new Gort(tx, ty);
         gortArr.push(gr);
         gortcount--;
     }
-}
+}*/
 function setup() {
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
@@ -102,6 +106,7 @@ function draw() {
     for (var i = 0; i < xotakerArr.length; i++) {
         xotakerArr[i].id = i;
         utelch = xotakerArr[i].utel();
+        //console.log(utelch);
         if (!utelch)
             xotakerArr[i].sharjvel();
         xotakerArr[i].bazmanal();

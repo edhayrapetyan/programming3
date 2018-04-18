@@ -1,6 +1,6 @@
 class Xotaker extends LivingCreature {
     constructor(x, y) {
-        super(x,y);
+        super(x, y);
         this.energy = 3;
         this.bazmanalc = 2;
         this.bmultiply = 1;
@@ -19,11 +19,18 @@ class Xotaker extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
+    yntrelVandak(ch) {
+        this.stanalNorKordinatner();
+        return super.yntrelVandak(ch);
+    }
+
 
     stanalXotiIdn(x, y) {
         for (var i = 0; i < grassArr.length; i++) {
-            if (grassArr[i].x == x && grassArr[i].y == y)
+            if (grassArr[i].x == x && grassArr[i].y == y) {
+                grassArr.splice(i, 1);
                 return i;
+            }
         }
     }
 
@@ -42,7 +49,8 @@ class Xotaker extends LivingCreature {
         var norVandak = random(this.yntrelVandak(1));
         if (norVandak) {
             matrix[this.y][this.x] = 0;
-            grassArr.splice(this.stanalXotiIdn(norVandak[0], norVandak[1]), 1);
+            this.stanalXotiIdn(norVandak[0], norVandak[1]);
+
             this.x = norVandak[0];
             this.y = norVandak[1];
             matrix[norVandak[1]][norVandak[0]] = 2;
@@ -59,7 +67,7 @@ class Xotaker extends LivingCreature {
         var norVandak = this.yntrelVandak(0);
         var norVandakRand = random(norVandak);
         this.bmultiply++;
-        if (norVandak && norVandakRand && this.energy > 5 && this.bmultiply % 5 == 0) {
+        if (norVandakRand && this.energy > 5 && this.bmultiply % 5 == 0) {
             var newx = norVandakRand[0];
             var newy = norVandakRand[1];
             matrix[newy][newx] = 2;

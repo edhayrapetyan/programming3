@@ -22,7 +22,7 @@ class LivingCreature {
             var y = this.directions[i][1];
 
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == 0) {
+                if (matrix[y][x] == ch) {
                     found.push(this.directions[i]);
                 }
             }
