@@ -1,11 +1,12 @@
-class Grass extends LivingCreature {
+var LivingCreature = require("./class.js");
+module.exports = class Grass extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.timer = -1;
     }
 
-    bazmanal() {
 
+    bazmanal() {
         var norVandak = random(this.yntrelVandak(0));
         //console.log(norVandak);
         if (this.multiply >= 8 && norVandak) {
@@ -16,6 +17,7 @@ class Grass extends LivingCreature {
         }
         this.multiply++;
     }
+
 
     tunavorvel() {
         if (this.timer != -1) {

@@ -1,4 +1,5 @@
-class Gort extends LivingCreature{
+var LivingCreature = require("./class.js");
+module.exports = class Gort extends LivingCreature{
     constructor(x, y) {
         super(x,y);
         this.timer = 50;
@@ -30,7 +31,7 @@ class Gort extends LivingCreature{
             }
 
         }
-        return found;
+        return found;   
     }
 
     sharjvel() {

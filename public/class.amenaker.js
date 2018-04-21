@@ -1,6 +1,7 @@
-class Amenaker extends LivingCreature {
+var LivingCreature = require("./class.js");
+module.exports = class Amenaker extends LivingCreature {
     constructor(x, y) {
-        super(x,y);
+        super(x, y);
         this.energy = 3;
         this.timer = -1;
     }
@@ -15,6 +16,11 @@ class Amenaker extends LivingCreature {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
+    }
+
+    yntrelVandak(ch) {
+        this.stanalNorKordinatner();
+        return super.yntrelVandak(ch);
     }
 
     sharjvel() {

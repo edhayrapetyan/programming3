@@ -1,4 +1,5 @@
-class Gishatich extends LivingCreature {
+var LivingCreature = require("./class.js");
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
         super(x,y);
         this.energy = 45;
@@ -17,6 +18,11 @@ class Gishatich extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
+
+    yntrelVandak(ch) {
+        this.stanalNorKordinatner();
+        return super.yntrelVandak(ch);
+    }
     
     sharjvel() {
         var norVandak = random(this.yntrelVandak(0));
@@ -27,6 +33,7 @@ class Gishatich extends LivingCreature {
             matrix[norVandak[1]][norVandak[0]] = 3;
         }
     }
+
     stanalXotakeriIdn(x, y) {
         for (var i = 0; i < xotakerArr.length; i++) {
             if (xotakerArr[i].x == x && xotakerArr[i].y == y)

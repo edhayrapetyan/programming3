@@ -33,34 +33,45 @@ while (xotakcount > 0) {
         xotakerArr.push(gr);
         xotakcount--;
     }
-}/*
+}
+
+
 while (gishcount > 0) {
     tx = Math.floor(Math.random() * matrixNum);
     ty = Math.floor(Math.random() * matrixNum);
     if (matrix[tx][ty] == 0) {
+        matrix[ty][tx] = 3;
         gr = new Gishatich(tx, ty);
         gishatichArr.push(gr);
         gishcount--;
     }
 }
+
 while (amenakercount > 0) {
     tx = Math.floor(Math.random() * matrixNum);
     ty = Math.floor(Math.random() * matrixNum);
     if (matrix[tx][ty] == 0) {
+        matrix[ty][tx] = 4;
         gr = new Amenaker(tx, ty);
         amenakerArr.push(gr);
         amenakercount--;
     }
 }
+
+
 while (gortcount > 0) {
     tx = Math.floor(Math.random() * matrixNum);
     ty = Math.floor(Math.random() * matrixNum);
     if (matrix[tx][ty] == 0) {
+        matrix[ty][tx] = 5;
         gr = new Gort(tx, ty);
         gortArr.push(gr);
         gortcount--;
     }
-}*/
+}
+
+
+
 function setup() {
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
@@ -108,7 +119,7 @@ function draw() {
         utelch = xotakerArr[i].utel();
         //console.log(utelch);
         if (!utelch)
-            xotakerArr[i].sharjvel();
+        xotakerArr[i].sharjvel();
         xotakerArr[i].bazmanal();
         xotakerArr[i].mahanal();
     }
