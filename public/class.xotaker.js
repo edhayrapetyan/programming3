@@ -66,7 +66,7 @@ module.exports = class Xotaker extends LivingCreature {
     }
 
     bazmanal() {
-
+        
         var norVandak = this.yntrelVandak(0);
         var norVandakRand = random(norVandak);
         this.bmultiply++;

@@ -6,6 +6,7 @@ var gishatichArr = [];
 var amenakerArr = [];
 var gortArr = [];
 
+
 var matrixNum = 20;
 var count = 100, xotakcount = 1, gishcount = 4, amenakercount = 1, gortcount = 1;
 var matrix = new Array(matrixNum);

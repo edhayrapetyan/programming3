@@ -1,3 +1,6 @@
+
+var LivingCreature = require(".public/class.js");
+
 var express = require("express");
 var app = express();
 
