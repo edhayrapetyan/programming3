@@ -14,7 +14,7 @@ module.exports = class LivingCreature {
             [this.x + 1, this.y + 1]
         ];
         this.id;
-        this.ser = ( ser == 0 ? "arakan" : "igakan" );
+        
     
     }
     yntrelVandak(ch) {

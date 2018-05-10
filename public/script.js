@@ -1,15 +1,3 @@
-var side = 15;
-var gr;
-var grassArr = [];
-var xotakerArr = [];
-var gishatichArr = [];
-var amenakerArr = [];
-var gortArr = [];
-
-
-var matrixNum = 20;
-var count = 100, xotakcount = 1, gishcount = 4, amenakercount = 1, gortcount = 1;
-var matrix = new Array(matrixNum);
 for (var i = 0; i < matrix.length; i++) {
     matrix[i] = new Array(matrixNum);
     for (var j = 0; j < matrix[i].length; j++)
