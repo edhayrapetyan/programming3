@@ -1,8 +1,8 @@
-var LivingCreature = require("./public/class.js");
-var Grass = require("./public/class.grass.js");
-var Xotaker = require("./public/class.grass.js");
-var Gishatich = require("./public/class.grass.js");
-var Amenkaker = require("./public/class.grass.js");
+var LivingCreature = require("./class.js");
+var Grass = require("./class.grass.js");
+var Xotaker = require("./class.grass.js");
+var Gishatich = require("./class.grass.js");
+var Amenkaker = require("./class.grass.js");
 
 var express = require("express");
 var app = express();
@@ -70,7 +70,3 @@ for (var i = 0; i < grassArr.length; i++) {
         gortArr[i].tunavorel();
         //gortArr[i].mahanal(); balance em pahpanum, ok?
     }
-
-
-
-

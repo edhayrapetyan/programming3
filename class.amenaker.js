@@ -1,4 +1,4 @@
-var LivingCreature = require("./public/class.js");
+var LivingCreature = require("./class.js");
 module.exports = class Amenaker extends LivingCreature {
     constructor(x, y) {
         super(x, y);
