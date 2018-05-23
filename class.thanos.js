@@ -2,7 +2,7 @@ var LivingCreature = require("./class.js");
 module.exports = class Thanos extends LivingCreature{
     constructor(x, y) {
         super(x,y);
-        this.explosion = 11;
+        this.explosion = 13;
     }
     stanalNorKordinatner() {
         this.directions = [
@@ -60,7 +60,7 @@ module.exports = class Thanos extends LivingCreature{
     getGortId(x, y) {
         for (var i = 0; i < gortArr.length; i++) {
             if (gortArr[i].x == x && gortArr[i].y == y)
-             return i;
+                return i;
         }
     }
 
@@ -78,14 +78,16 @@ module.exports = class Thanos extends LivingCreature{
                 gishatichArr[this.getGishatichId(target[0], target[1])].explosion == 3;
             }
             else if (matrix[target[1]][target[0]] == 4 ) {
-                amenakerArr[this.getAmenakerId(target[0], target[1])].exposion == 3;
+                amenakerArr[this.getAmenakerId(target[0], target[1])].explosion == 3;
             }
-            else if (matrix[target[1]][target[0]] == 5) {
+            else if (matrix[target[1]][target[0]] == 5 ) {
                 gortArr[this.getGortId(target[0], target[1])].explosion == 3;
-            } 
+            }
         }
     }
 
+
+        
     sharjvel() {
         var norVandak = random(this.yntrelVandak(0));
         if (norVandak) {
