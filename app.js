@@ -2,7 +2,7 @@ var LivingCreature = require("./public/class.js");
 var Grass = require("./public/class.grass.js");
 var Xotaker = require("./public/class.xotaker.js");
 var Gishatich = require("./public/class.gishatich.js");
-var Amenkaker = require("./public/class.amenaker.js");
+var Amenaker = require("./public/class.amenaker.js");
 var Gort = require("./public/class.gort.js")
 
 var express = require("express");
@@ -20,9 +20,55 @@ server.listen(3000, function () {
     console.log("Example is running on port 3000");
 });
 
+var setonce = 0;
+
+function ashxatanq () {
+    for (var i = 0; i < grassArr.length; i++) {
+        grassArr[i].id = i;
+        grassArr[i].bazmanal();
+        grassArr[i].tunavorvel();
+    }
+    var utelch;
+    for (var i = 0; i < xotakerArr.length; i++) {
+        xotakerArr[i].id = i;
+        utelch = xotakerArr[i].utel();
+        //console.log(utelch);
+        if (!utelch)
+            xotakerArr[i].sharjvel();
+        xotakerArr[i].bazmanal();
+        xotakerArr[i].mahanal();
+    }
+    for (var i = 0; i < gishatichArr.length; i++) {
+        gishatichArr[i].id = i;
+        utelch = gishatichArr[i].utel();
+        if (!utelch) {
+            gishatichArr[i].sharjvel();
+            gishatichArr[i].energy--;
+        }
+
+        gishatichArr[i].bazmanal();
+        gishatichArr[i].mahanal();
+    }
+    for (var i = 0; i < amenakerArr.length; i++) {
+        amenakerArr[i].id = i;
+        utelch = amenakerArr[i].utel();
+        if (!utelch) {
+            amenakerArr[i].sharjvel();
+            amenakerArr[i].energy--;
+        }
+        amenakerArr[i].bazmanal();
+        amenakerArr[i].mahanal();
+    }
+    for (var i = 0; i < gortArr.length; i++) {
+        gortArr[i].id = i;
+        gortArr[i].sharjvel();
+        gortArr[i].tunavorel();
+        //gortArr[i].mahanal(); balance em pahpanum, ok?
+    }
+}
 
 io.on('connection', function (socket) {
-    
+
     if (setonce == 0) {
         global.side = 15;
         global.gr;
@@ -34,13 +80,17 @@ io.on('connection', function (socket) {
         global.matrixNum = 20;
         global.count = 100, global.xotakcount = 1, global.gishcount = 4, global.amenakercount = 1, global.gortcount = 1;
         global.matrix = new Array(matrixNum);
+        for (var i = 0; i < matrix.length; i++) {
+            global.matrix[i] = new Array(matrixNum);
+        for (var j = 0; j < matrix[i].length; j++)
+            global.matrix[i][j] = 0;
+        }
         var grass;
-		var xotaker;
-		var gishatich;
-		var amenaker;
-		var gort;
-		var thanos;
-
+        var xotaker;
+        var gishatich;
+        var amenaker;
+        var gort;
+        var thanos;
 
 
         while (count > 0) {
@@ -100,8 +150,17 @@ io.on('connection', function (socket) {
         }
 
         var utelch;
-		global.timeofyear = 300;
-		global.curYear = "Spring";
-		setonce++;
+        global.timeofyear = 300;
+        global.curYear = "Spring";
+        setonce++;
     }
+
+    setInterval(function() {
+        ashxatanq();
+        var info = {
+            matrix: global.matrix,
+            side: global.side
+        };
+        socket.emit("uxarkel", info);
+    },300);
 });

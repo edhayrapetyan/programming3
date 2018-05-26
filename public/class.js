@@ -1,3 +1,4 @@
+var random = require("./function.random.js");
 module.exports = class LivingCreature {
     constructor(x, y) {
         this.x = x;
