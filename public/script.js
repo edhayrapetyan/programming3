@@ -1,13 +1,13 @@
-var io = require('socket.io')(server);
-var socket = io.connect('http://localhost:3000');
+var socket = io(); 
 
-socket.on('sendinfo', function (data) {
-
-    function setup() {
+function setup() {
         frameRate(5);
         createCanvas(matrix[0].length * side, matrix.length * side);
         background('#acacac');
-    }
+}
+
+socket.on('sendinfo', function (data) {
+
     console.log("GOT")
     if (data.curYear == "Spring")
         background("#f7d8d5");

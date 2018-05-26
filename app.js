@@ -1,22 +1,22 @@
-var LivingCreature = require("./class.js");
-var Grass = require("./class.grass.js");
-var Xotaker = require("./class.xotaker.js");
-var Gishatich = require("./class.gishatich.js");
-var Amenkaker = require("./class.amenaker.js");
-var Gort = require("./class.gort.js")
+var LivingCreature = require("./public/class.js");
+var Grass = require("./public/class.grass.js");
+var Xotaker = require("./public/class.xotaker.js");
+var Gishatich = require("./public/class.gishatich.js");
+var Amenkaker = require("./public/class.amenaker.js");
+var Gort = require("./public/class.gort.js")
 
 var express = require("express");
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-app.use(express.static("public"));
+app.use(express.static("."));
 
 app.get("/", function (req, res) {
-    res.redirect("public");
+    res.redirect("public/index.html");
 });
 
-app.listen(3000, function () {
+server.listen(3000, function () {
     console.log("Example is running on port 3000");
 });
 
@@ -24,7 +24,6 @@ app.listen(3000, function () {
 io.on('connection', function (socket) {
     
     if (setonce == 0) {
-        console.log("Connected!");
         global.side = 15;
         global.gr;
         global.grassArr = [];
@@ -100,37 +99,9 @@ io.on('connection', function (socket) {
             }
         }
 
-        var cellch;
+        var utelch;
 		global.timeofyear = 300;
 		global.curYear = "Spring";
 		setonce++;
     }
-
-
-    setInterval(function () {
-        job();
-        var data = {
-            arr: global.arr,
-            curYear: global.curYear,
-            side: global.side,
-            grassArr: global.grassArr
-        }
-        socket.emit("sendinfo", data);
-
-        socket.on("create", function (creating_data) {
-            se = Math.floor(Math.random() * (1 - 0 + 1)) + 0;
-            if (se == 1) {
-                var fi_se = 2;
-            }
-            else {
-                var fi_se = 2.5;
-            }
-            if (global.arr[creating_data.c_x][creating_data.c_y] == 0) {
-                xotaker = new Xotaker(creating_data.c_x, creating_data.c_y, fi_se);
-                global.herbArr.push(xotaker);
-            }
-
-        });
-        // console.log("Worked");
-    }, 400);
 });
