@@ -32,10 +32,8 @@ module.exports = class Xotaker extends LivingCreature {
 
     stanalXotiIdn(x, y) {
         for (var i = 0; i < grassArr.length; i++) {
-            if (grassArr[i].x == x && grassArr[i].y == y) {
-                grassArr.splice(i, 1);
+            if (grassArr[i].x == x && grassArr[i].y == y)
                 return i;
-            }
         }
     }
 
@@ -54,8 +52,7 @@ module.exports = class Xotaker extends LivingCreature {
         var norVandak = random(this.yntrelVandak(1));
         if (norVandak) {
             matrix[this.y][this.x] = 0;
-            this.stanalXotiIdn(norVandak[0], norVandak[1]);
-
+            grassArr.splice(this.stanalXotiIdn(norVandak[0], norVandak[1]), 1);
             this.x = norVandak[0];
             this.y = norVandak[1];
             matrix[norVandak[1]][norVandak[0]] = 2;
@@ -68,11 +65,11 @@ module.exports = class Xotaker extends LivingCreature {
     }
 
     bazmanal() {
-        
+
         var norVandak = this.yntrelVandak(0);
         var norVandakRand = random(norVandak);
         this.bmultiply++;
-        if (norVandakRand && this.energy > 5 && this.bmultiply % 5 == 0) {
+        if (norVandak && norVandakRand && this.energy > 5 && this.bmultiply % 5 == 0) {
             var newx = norVandakRand[0];
             var newy = norVandakRand[1];
             matrix[newy][newx] = 2;
@@ -91,7 +88,4 @@ module.exports = class Xotaker extends LivingCreature {
             xotakerArr.splice(this.id, 1);
             this.energy = 0;
         }
-
-    }
-}
-
+    } }

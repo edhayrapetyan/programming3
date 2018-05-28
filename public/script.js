@@ -1,4 +1,5 @@
 var socket = io(); 
+var exanak;
 
 function setup() {
         frameRate(5);
@@ -6,12 +7,30 @@ function setup() {
         background('#acacac');
 }
 
+socket.on("a", function (data) {
+    matrix = data[0];
+    exanak = data[1];
+    document.getElementById('exanak').innerText = exanak;
+});
+
 socket.on('uxarkel', function (info) {
 
 
     for (i = 0; i < info.matrix.length; i++)
         for (j = 0; j < info.matrix[i].length; j++) {
-            if (info.matrix[i][j] == 1) {
+            if (exanak == "garun" || exanak == "amar") {
+                fill("lightgreen");
+                rect(x * side, y * side, side, side);
+            }
+            else if (exanak == "ashun") {
+                fill("orange");
+                rect(x * side, y * side, side, side);
+            }
+            else if (exanak == "dzmer") {
+                fill("white");
+                rect(x * side, y * side, side, side);
+            }
+            else if (info.matrix[i][j] == 1) {
                 fill("green");
                 rect(j * info.side, i * info.side, info.side, info.side);
             }

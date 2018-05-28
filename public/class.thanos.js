@@ -1,3 +1,7 @@
+//tenc el chascreci normal sarqel 
+// karogh eq nuynisk chnayel
+// stex animast copy paste a im myus kerparic
+
 var LivingCreature = require("./class.js");
 var random = require("./function.random.js");
 

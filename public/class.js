@@ -16,7 +16,6 @@ module.exports = class LivingCreature {
         ];
         this.id;
         
-    
     }
     yntrelVandak(ch) {
         var found = [];
